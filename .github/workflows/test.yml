@@ -17,3 +17,4 @@ jobs:
           sudo apt-get install -y fish
       - name: Run tests
         run: fish tests/test.fish
+        # The test script will exit with a non-zero status code if the tests fail, which will cause the workflow to fail.
