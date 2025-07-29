@@ -1,0 +1,19 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install fish
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fish
+      - name: Run tests
+        run: fish tests/test.fish
