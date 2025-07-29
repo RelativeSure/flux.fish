@@ -3,7 +3,7 @@ source functions/flux.fish
 source conf.d/flux.fish
 
 # Check if the functions are defined
-if functions -q fgh && functions -q fga && functions -q fgk && functions -q fgsg && functions -q fl && functions -q fr && functions -q fs && functions -q fres
+if functions -q fg && functions -q fc && functions -q fd && functions -q fr && functions -q fs && functions -q fres && functions -q fgh && functions -q fch && functions -q fdh && functions -q frh && functions -q fsh && functions -q fresh && functions -q fgk && functions -q fck && functions -q fdk && functions -q frk && functions -q fsk && functions -q fresk && functions -q fgs && functions -q fcs && functions -q fds && functions -q frs && functions -q fss && functions -q fress
     echo "All functions are defined"
 else
     echo "Some functions are not defined"
