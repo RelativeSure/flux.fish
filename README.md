@@ -4,6 +4,14 @@ Fisher plugin for Flux.
 
 This plugin provides abbreviations and dynamic completions for the `flux` command.
 
+## Installation
+
+Install with [Fisher](https://github.com/jorgebucaran/fisher):
+
+```fish
+fisher install RelativeSure/flux.fish
+```
+
 ## Abbreviations
 
 The following abbreviations are available:
@@ -41,6 +49,3 @@ This plugin provides dynamic completions for the `get` commands. To use the dyna
 
 For example, to get a list of helm releases, you can type `fgh` and press tab.
 
-## Error Handling
-
-This plugin will check if the `flux` command exists before trying to execute it. If it doesn't exist, it will print an error message.
