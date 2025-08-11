@@ -1,5 +1,12 @@
 # Completions for flux commands
-complete -c fg -n "not __fish_seen_subcommand_from (commandline -opc)" -d "flux get" -a "'all helmrelease kustomization source'; and complete -c fg -n '__fish_seen_subcommand_from helmrelease' -a '(kubectl get helmrelease -A -o jsonpath='{.items[*].metadata.name}')'; and complete -c fg -n '__fish_seen_subcommand_from kustomization' -a '(kubectl get kustomization -A -o jsonpath='{.items[*].metadata.name}')'; and complete -c fg -n '__fish_seen_subcommand_from source' -a \"'git helm oci'; and complete -c fgs -n '__fish_seen_subcommand_from git' -a '(kubectl get gitrepository -A -o jsonpath='{.items[*].metadata.name}')'; and complete -c fgs -n '__fish_seen_subcommand_from helm' -a '(kubectl get helmrepository -A -o jsonpath='{.items[*].metadata.name}')'; and complete -c fgs -n '__fish_seen_subcommand_from oci' -a '(kubectl get ocirepository -A -o jsonpath='{.items[*].metadata.name}')'\""
+complete -c fg -n "not __fish_seen_subcommand_from all helmrelease kustomization source" -d "flux get" -a "all helmrelease kustomization source"
+complete -c fg -n "__fish_seen_subcommand_from helmrelease" -a "(kubectl get helmrelease -A -o jsonpath='{.items[*].metadata.name}')"
+complete -c fg -n "__fish_seen_subcommand_from kustomization" -a "(kubectl get kustomization -A -o jsonpath='{.items[*].metadata.name}')"
+complete -c fg -n "__fish_seen_subcommand_from source and not __fish_seen_subcommand_from git helm oci" -a "git helm oci"
+complete -c fg -n "__fish_seen_subcommand_from source and __fish_seen_subcommand_from git" -a "(kubectl get gitrepository -A -o jsonpath='{.items[*].metadata.name}')"
+complete -c fg -n "__fish_seen_subcommand_from source and __fish_seen_subcommand_from helm" -a "(kubectl get helmrepository -A -o jsonpath='{.items[*].metadata.name}')"
+complete -c fg -n "__fish_seen_subcommand_from source and __fish_seen_subcommand_from oci" -a "(kubectl get ocirepository -A -o jsonpath='{.items[*].metadata.name}')"
+
 complete -c fc -n "not __fish_seen_subcommand_from (commandline -opc)" -d "flux create"
 complete -c fd -n "not __fish_seen_subcommand_from (commandline -opc)" -d "flux delete"
 complete -c fr -n "not __fish_seen_subcommand_from (commandline -opc)" -d "flux reconcile"
@@ -27,7 +34,11 @@ complete -c fresk -n "not __fish_seen_subcommand_from (commandline -opc)" -d "fl
 
 # Dynamic completion for fgs
 # Requires kubectl to be installed and configured
-complete -c fgs -n "not __fish_seen_subcommand_from (commandline -opc)" -d "flux get source" -a "'git helm oci'; and complete -c fgs -n '__fish_seen_subcommand_from git' -a '(kubectl get gitrepository -A -o jsonpath='{.items[*].metadata.name}')'; and complete -c fgs -n '__fish_seen_subcommand_from helm' -a '(kubectl get helmrepository -A -o jsonpath='{.items[*].metadata.name}')'; and complete -c fgs -n '__fish_seen_subcommand_from oci' -a '(kubectl get ocirepository -A -o jsonpath='{.items[*].metadata.name}')'"
+complete -c fgs -n "not __fish_seen_subcommand_from git helm oci" -d "flux get source" -a "git helm oci"
+complete -c fgs -n "__fish_seen_subcommand_from git" -a "(kubectl get gitrepository -A -o jsonpath='{.items[*].metadata.name}')"
+complete -c fgs -n "__fish_seen_subcommand_from helm" -a "(kubectl get helmrepository -A -o jsonpath='{.items[*].metadata.name}')"
+complete -c fgs -n "__fish_seen_subcommand_from oci" -a "(kubectl get ocirepository -A -o jsonpath='{.items[*].metadata.name}')"
+
 complete -c fcs -n "not __fish_seen_subcommand_from (commandline -opc)" -d "flux create source"
 complete -c fds -n "not __fish_seen_subcommand_from (commandline -opc)" -d "flux delete source"
 complete -c frs -n "not __fish_seen_subcommand_from (commandline -opc)" -d "flux reconcile source"
